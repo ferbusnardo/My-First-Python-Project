@@ -44,6 +44,7 @@ def calculator():
                     mode = i
             print(f'The mode is {color["bg_black"]}{mode}{color["reset"]}')
         elif answer2 == '0':
+            print(f'{color["blue"]}Bye!{color["reset"]}')
             break
 
 
