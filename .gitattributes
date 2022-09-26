@@ -54,5 +54,7 @@ while True:
     answer1 = str(input('Would you like to continue? [Yes/No]')).upper()
     if answer1 == 'NO':
         break
+print('-' * 40)
 print(f'You chose the numbers:\n{color["blue"]}{numbers}{color["reset"]}')
+print('-' * 40)
 calculator()
