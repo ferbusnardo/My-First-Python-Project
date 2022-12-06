@@ -1,0 +1,60 @@
+color = {'bg_black': '\033[1;40m',
+         'blue': '\033[1;34m',
+         'reset': '\033[m'
+         }
+numbers = list()
+
+
+def header(msg):
+    space = len(msg) + 10
+    print('-' * 40)
+    print(f'{color["blue"]}{msg.center(space)}{color["reset"]}')
+    print('-' * 40)
+
+
+def calculator():
+    while True:
+        print('-' * 40)
+        answer2 = str(input('Press "1" to calculate the Mean\n'
+                            'Press "2" to calculate the Median\n'
+                            'Press "3" to calculate the Mode\n'
+                            'Press "0" to exit\n'))
+        print('-' * 40)
+        if answer2 == '1':
+            mean = sum(numbers) / len(numbers)
+            print(f'The mean is {color["bg_black"]}{mean:.2f}{color["reset"]}')
+        elif answer2 == '2':
+            numbers.sort()
+            if len(numbers) % 2 == 0:
+                m1 = numbers[len(numbers)//2]
+                m2 = numbers[len(numbers)//2 - 1]
+                median = (m1 + m2)/2
+            else:
+                median = numbers[len(numbers)//2]
+            print(f'The median is {color["bg_black"]}{median:.2f}{color["reset"]}')
+        elif answer2 == '3':
+            frequency = {}
+            mode = 0
+            for i in numbers:
+                frequency.setdefault(i, 0)
+                frequency[i] += 1
+            frequent = max(frequency.values())
+            for i, j in frequency.items():
+                if j == frequent:
+                    mode = i
+            print(f'The mode is {color["bg_black"]}{mode}{color["reset"]}')
+        elif answer2 == '0':
+            print(f'{color["blue"]}Bye!{color["reset"]}')
+            break
+
+
+header('Welcome to the MMM calculator')
+while True:
+    numbers.append(float(input('Insert a number: ')))
+    answer1 = str(input('Would you like to continue? [Yes/No]')).upper()
+    if answer1 == 'NO':
+        break
+print('-' * 40)
+print(f'You chose the numbers:\n{color["blue"]}{numbers}{color["reset"]}')
+print('-' * 40)
+calculator()
